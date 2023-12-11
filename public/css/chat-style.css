@@ -1,0 +1,335 @@
+* {
+    box-sizing: border-box;
+    margin:0px;
+    padding:0px;
+    color:white;
+}
+
+.container-fluid {
+    background-color: #282a37;
+    width:100vw;
+    height: 100vh;
+}
+.chatPage {
+    position: relative;top:8vh;
+    height:600px;
+    width:1000px;
+}
+
+.main {
+    height:600px;
+}
+
+.chatArea {
+    background-color: #3e404d;
+    overflow-y:auto;
+    max-height: 600px;
+}
+
+
+/*Style chatUsers*/
+
+.chatUsers {
+    background-color: #282a37;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.chatUsers::-webkit-scrollbar-track {
+    background-color: #3582c6;
+}
+
+.chatUsers::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+  
+.chatUsers::-webkit-scrollbar-track {
+    background: transparent;
+    padding: 2px;
+}
+  
+.chatUsers::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+    border-radius: 12px;
+}
+
+.userField {
+    width:290px;
+    height: 100px;
+    background-color: #3e414e;
+    box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding:20px;
+    color:white;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+
+
+.perfilUser {
+    width:50px;
+    height: 50px;
+    border-radius:50%;
+    background-position: center;
+    background-size: cover;
+    background-color: #282a37;
+    border:1px solid  #3582c6;
+}
+
+.userStatus {
+    margin-left: 20px;
+}
+
+p {
+    font-size:14px;
+    font-weight: 300;
+}
+
+.subTitle {
+    font-weight: 100;
+    font-size:14px;
+}
+
+.userTitle {
+    font-size:16px;
+    font-weight:bold;
+}
+
+.mood {
+    background-color: transparent;
+    border:none;
+    width:160px;
+}
+
+.mood:active {
+    border: 0px 0px 0px 1px solid white;
+}
+
+.mood:focus {
+    border: 0px 0px 0px 1px solid white;
+    outline:none;
+    border-bottom: 1px solid #3582c6;
+}
+
+
+/* Style chatArea */
+
+.chatArea {
+    background: linear-gradient(540deg, rgba(40,42,55,1) 9%, rgba(62,64,77,1) 79%);
+    overflow-y:auto;
+    max-height: 600px;
+}
+
+.chat {
+    list-style: none;
+    padding: 50px;
+}
+
+.chatArea::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+  
+.chatArea::-webkit-scrollbar-track {
+    background: transparent;
+    padding: 2px;
+}
+  
+.chatArea::-webkit-scrollbar-thumb {
+    background-color: #3582c6;
+    border-radius: 12px;
+}
+
+
+.joined {
+    color:#0f4e85;
+}
+
+.disjoined {
+    color:red;
+}
+
+.msgText {
+    background-color: #a1acb6;
+    box-shadow: 0px 1px 10px 0px #3582c677;
+    border-radius: 20px;
+    padding:20px;
+    max-width: 300px;
+    color:white;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.msgTextSended {
+    background-color:#3582c6;
+    box-shadow: 0px 1px 10px 0px #3582c677;
+    border-radius: 20px;
+    padding:20px;
+    max-width: 300px;
+    color:white;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;left:250px;
+}
+
+
+
+
+/* Style textArea*/
+
+
+.textArea {
+    background-color: #3e404d;
+    padding:10px;
+    gap:18px;
+    border-radius:0px 0px 20px 20px;
+    flex:1;
+}
+
+.exitButton,.editButton {
+    border:none;
+    background-color: transparent;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.exitButton ion-icon {
+    font-size: 40px;
+    color:#adadad75;
+}
+.editButton ion-icon {
+    font-size: 40px;
+    color:#adadad75;
+}
+
+.editButton ion-icon:hover {
+    color:#3582c6;
+}
+
+.exitButton ion-icon:hover {
+    color: #3582c6;
+}
+
+textarea {
+    font-size:11px;
+    width:400px;
+    border:1px solid #3582c6;
+    padding:10px;
+    border-radius: 15px;
+    background-color:#3e404d;
+    color:rgb(255, 255, 255);
+    resize:none;
+    min-height: 50px;
+    max-height:50px;
+    padding-left: 20px;
+    position: relative;bottom:20px;
+    outline: none;
+}
+
+textarea:focus{
+    border:2px solid #3582c6;
+}
+textarea:active{
+    border:2px solid #3582c6;
+}
+
+
+.sendButton{
+    margin-top: 5px;;
+    padding:10px;
+    background-color: #3582c6;
+    box-shadow: 0px 1px 10px 0px #3582c677;
+    border-radius: 15%;
+    border:none;
+    position: relative;bottom:20px;
+}
+.sendButton:active{
+    background-color: white;
+}
+
+.sendButton ion-icon {
+    color: white;
+    font-size: 20px;
+    background-color: none;
+}
+
+.listUsers {
+    list-style: none;
+    margin-top:50px;;
+}
+
+
+h1 {
+    text-align: center;
+    font-size:14px;
+}
+
+
+/* Style edit Area*/
+
+.editMain {
+    background: linear-gradient(370deg, rgba(40,42,55,1) 9%, rgba(62,64,77,1) 79%);
+    height:400px;
+    width:400px;
+    margin-left: auto;
+    margin-right: auto;
+    position:relative;top:30vh;
+    
+}
+
+.elementsEdit {
+    width:200px;
+}
+
+.perfilCircle {
+    width: 150px;
+    height: 150px;
+    background-color: black;
+    border-radius: 50%;
+    border: 1px solid #0f4e85;
+    margin-left: auto;
+    margin-right: auto;
+    position:relative;bottom:60px;
+}
+
+.editForms {
+    gap:50px;
+}
+
+input[type="text"] {
+    padding:5px;
+    padding-left: 10px;
+    box-shadow: 0px 4px 20px 0px #226bab4a;
+    border:none;
+    background-color: transparent;
+    color:white;
+}
+
+input[type="submit"] {
+    padding:6px;
+    background-color: #226CAB;
+    box-shadow: 0px 4px 20px 0px #226bab87;
+    color:white;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border:none;
+}
+
+select {
+    width:150px;
+    height: 35px;
+    padding:5px;
+    padding-left: 10px;
+    box-shadow: 0px 4px 20px 0px #226bab4a;
+    border:none;
+    background-color: transparent;
+    position: relative;left:20px;top:10px;
+    color: #7b7b7b;
+    outline:none;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image.png" href="/images/bitLogo.png">
+    <title>Registrar</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="login_area d-flex align-items-center justify-content-center flex-column">
+            <h5 class="title">Registre-se aqui !</h5>
+            <p class="subtitle">Preencha os campos corretamente para prosseguir</p>
+            <div class="box_login d-flex justify-content-center">
+                <form method="POST" class="d-flex flex-column" action='/register-send'>
+                    {{>partials/perfil}}
+                    <input type="text" placeholder="usermail" name="username"><br>
+                    <input type="email" placeholder="email" name="email"><br>
+                    <input type="password" placeholder="password" name="password"><br>
+                    <p>{{message}}</p>
+                    <input type="submit" value="Cadastrar">
+                    <p>Já Registrado? <span class="blue_text"><a href="/">Logue aqui</a></span></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+* {
+    box-sizing: border-box;
+    margin:0px;
+    padding:0px;
+}
+
+
+
+.container-fluid {
+    background-color:#282a37;
+    height:100vh;
+    width:100vw;
+}
+.box_login {
+    background: linear-gradient(370deg, rgba(40,42,55,1) 9%, rgba(62,64,77,1) 79%);
+    padding:70px 50px 60px 50px;
+    position:relative;top:30px;
+}
+
+.login_area {
+    height: 100%;
+    width:100%;
+}
+
+
+
+p {
+    font-weight: bold;
+    font-size:15px;
+    color:white;
+    text-align: center;
+}
+
+input[type="email"], input[type="password"], input[type="text"] {
+    padding:5px;
+    padding-left: 10px;
+    box-shadow: 0px 4px 20px 0px #226bab4a;
+    border:none;
+    background-color: transparent;
+    color:white;
+}
+
+input:focus {
+    transform: scale(1.1);
+    outline:none;
+}
+
+input[type="submit"] {
+    padding:6px;
+    background-color: #226CAB;
+    box-shadow: 0px 4px 20px 0px #226bab87;
+    color:white;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border:none;
+}
+
+input[type="submit"]:active {
+    background-color: #226CAB;
+    transform: scale(1.1);
+    color: aliceblue;
+} 
+
+.blue_text {
+    color:#226CAB;
+}
+
+h1 {
+    color:white;
+}
+
+form {
+    gap:10px;
+    width:18vw;
+}
+
+.FG_password {
+    text-align: end;
+    margin-top: -20px;
+    margin-bottom: 10px;
+    font-size:12px;
+}
+
+ion-icon {
+    font-size:50px;
+    color:#226CAB;
+    position: relative;top:15px;left:160px;
+}
+
+a {
+    text-decoration: none;
+    color:#226CAB;
+}
+
+
+.msg_For_User {
+    color:rgb(187, 92, 92)
+}
+
+.title {
+    color:white;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 10px;
+    width:350px;
+}
+
+.subtitle {
+    color: white;
+    font-size: 12px;
+    text-align: left;
+    width:350px;
+    font-weight: 300;
+}
+
+.perfilUser {
+    width:50px;
+    height: 50px;
+    border-radius:50%;
+    background-position: center;
+    background-size: cover;
+    background-color: #282a37;
+    border:1px solid  #3582c6;
+}
+
+select {
+    width:150px;
+    height: 35px;
+    padding:5px;
+    padding-left: 10px;
+    box-shadow: 0px 4px 20px 0px #226bab4a;
+    border:none;
+    background-color: transparent;
+    position: relative;left:20px;top:10px;
+    color: #7b7b7b;
+    outline:none;
+}
+
+.selectPerfilUser {
+    margin-bottom: 30px;
+}

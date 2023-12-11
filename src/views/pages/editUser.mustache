@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/chat-style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="icon" type="image.png" href="/images/bitLogo.png">
+    <title></title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="editMain d-flex justify-content-center">
+            <div class="elementsEdit">
+                <div class="perfilUser perfilCircle" style="background-Image:url('{{bgUser}}')"></div>
+                <form class=" editForms d-flex flex-column justify-content-center">
+                    <input type="text" placeholder="Username" value="{{userName}}" readOnly>
+                    <select class="backgroundPerfil" name="backgroundOption" disabled>
+                        <option value="/images/wolf.jpg">wolf</option>
+                        <option value="/images/dog.jpg">dog</option>
+                        <option value="/images/space.jpg">space</option>
+                        <option value="/images/vaporwave.jpg">vaporwave</option>
+                        <option value="/images/green.jpg">green</option>
+                    </select>
+                    <input type="submit" value="Salvar">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js" integrity="sha512-Xm9qbB6Pu06k3PUwPj785dyTl6oHxgsv9nHp7ej7nCpAqGZT3OZpsELuCYX05DdonFpTlBpXMOxjavIAIUwr0w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/socketIO.js"></script>
+    <script src="/js/script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

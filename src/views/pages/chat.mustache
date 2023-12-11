@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/chat-style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="icon" type="image.png" href="/images/bitLogo.png">
+    <title></title>
+</head>
+<body>
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="chatPage">
+            <div class="row main">
+                <div class="col chatArea">
+                    <div>
+                        <strong>Chat</strong>
+                        <ul class="chat"></ul>
+                    </div>
+                </div>
+                <div class="col-4 chatUsers">
+                    <div>
+                        <ul class="listUsers">
+                            <li><strong>Users</strong></li>
+                        </ul>
+                    </div> 
+                </div>
+            </div>
+            <div class="row mainText">
+                <div class="col textArea d-flex justify-content-center">
+                    <textarea class="textInputArea" placeholder="Aperte o ( Enter ) para enviar"></textarea>
+                </div>
+                <div class="col-4 buttonsArea d-flex justify-content-center align-items-center">
+                    <div class="buttonIcons d-flex">
+                         <a class="editButton" href="/editUser">
+                            <ion-icon name="create-outline"></ion-icon>
+                        </a>
+                        <a href="/logout" type="submit" class="exitButton">
+                            <ion-icon name="log-in-outline"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js" integrity="sha512-Xm9qbB6Pu06k3PUwPj785dyTl6oHxgsv9nHp7ej7nCpAqGZT3OZpsELuCYX05DdonFpTlBpXMOxjavIAIUwr0w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/socketIO.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
