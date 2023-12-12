@@ -38,7 +38,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -e ts,json,mustache,html,css,js src/server.ts"
+    "start": "nodemon -e ts,json,mustache,html,css,js src/server.ts",
+    "start-web": "pm2 start server.ts"
   },
   "author": "",
   "license": "ISC",
