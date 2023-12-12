@@ -5,8 +5,8 @@ import { mongoConnect } from './database/mongo';
 import appRoutes from './routes/appRoutes';
 import mustache from 'mustache-express';
 import session from 'express-session';
-import http from 'http'
-import {Server} from 'socket.io';
+import http from 'http';
+import {Server} from 'socket.io'
 
 
 dotenv.config()
@@ -90,7 +90,7 @@ io.on('connection',(socket)=> {
 
   
 
-  socket.on('send-message',(msg)=> {
+  socket.on('send-message',(msg:string)=> {
       let obj= {
         user:(socket.request as any).session.user.username,
         message:msg
@@ -98,11 +98,6 @@ io.on('connection',(socket)=> {
     socket.emit('send-User',obj)
     socket.broadcast.emit('send-message',obj)
 
-  })
-
-  socket.on('status-mood',(mood)=> {
-    socket.emit('status-mood',mood)
-    socket.broadcast.emit('status-mood',mood)
   })
 
 });
