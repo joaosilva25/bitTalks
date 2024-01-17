@@ -1,5 +1,5 @@
-import users from "../models/users";
-import bcrypt from 'bcrypt';
+import users from "../models/Users";
+import bcryptjs from 'bcryptjs';
 import nodemailer from 'nodemailer'
 
 
@@ -25,7 +25,7 @@ export const createUser = async(username:string,password:string,email:string,cod
 }
 
 export const findPassword = async(passwordText:string,encrypted:string)=> {
-    let descriptedPass=bcrypt.compareSync(passwordText,encrypted)
+    let descriptedPass=bcryptjs.compareSync(passwordText,encrypted)
 
     console.log('Password Text:', passwordText);
     console.log('Encrypted Password:', encrypted);

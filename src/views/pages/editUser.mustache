@@ -13,8 +13,8 @@
         <div class="editMain d-flex justify-content-center">
             <div class="elementsEdit">
                 <div class="perfilUser perfilCircle" style="background-Image:url('{{bgUser}}')"></div>
-                <form class=" editForms d-flex flex-column justify-content-center">
-                    <input type="text" placeholder="Username" value="{{userName}}" readOnly>
+                <form method="POST" class=" editForms d-flex flex-column justify-content-center">
+                    <input class="userName" name="username" type="text" placeholder="Username" value="{{userName}}" readOnly>
                     <select class="backgroundPerfil" name="backgroundOption" disabled>
                         <option value="/images/wolf.jpg">wolf</option>
                         <option value="/images/dog.jpg">dog</option>
@@ -22,15 +22,16 @@
                         <option value="/images/vaporwave.jpg">vaporwave</option>
                         <option value="/images/green.jpg">green</option>
                     </select>
-                    <input type="submit" value="Salvar">
-                </form>
+                    <div class="editButtons d-flex justify-content-center">
+                        <button type="button" class="edit" onclick="editMode()">Editar</button>
+                        <input type="submit" value="Salvar">
+                    </div>
+                </form> 
             </div>
         </div>
     </div>
 
     <script src="/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js" integrity="sha512-Xm9qbB6Pu06k3PUwPj785dyTl6oHxgsv9nHp7ej7nCpAqGZT3OZpsELuCYX05DdonFpTlBpXMOxjavIAIUwr0w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/js/socketIO.js"></script>
     <script src="/js/script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

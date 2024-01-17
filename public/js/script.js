@@ -11,3 +11,20 @@ function backgroundChoose() {
 }
 
 select.addEventListener('change',backgroundChoose);
+
+
+function editMode() {
+    let userName=document.querySelector('.userName');
+    
+
+    if(userName.readOnly==true) {
+        userName.readOnly = false;
+        select.disabled=false;
+    }
+    else {
+        userName.readOnly = true;
+        select.disabled=false;
+    }
+
+
+}

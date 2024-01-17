@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import * as UserServices from '../services/UserServices'
-import bcrypt from 'bcrypt'
-import users from '../models/users';
+import bcryptjs from 'bcryptjs'
+import users from '../models/Users';
 
 
 export const register= async(req:Request,res:Response)=> {
@@ -119,7 +119,7 @@ export const confirmatedUser=async (req:Request,res:Response)=> {
                 let token=await req.session.usercode.token
                 let perfil=await req.session.usercode.perfil
 
-                const hashPassword=bcrypt.hashSync(password, 10)
+                const hashPassword=bcryptjs.hashSync(password, 10)
 
 
                 let addUserBD= await UserServices.createUser(username,hashPassword,email,codeCompare,token,perfil)
@@ -269,7 +269,7 @@ export const createNewPass=async(req:Request,res:Response) => {
     let {email}=req.body
     let {password}=req.body
 
-    let hashPass=bcrypt.hashSync(password,10)
+    let hashPass=bcryptjs.hashSync(password,10)
 
     if (!password) {
         let emailUserToken=email
@@ -304,3 +304,22 @@ export const createNewPass=async(req:Request,res:Response) => {
     }
 }
 
+export const editUser=async (req:Request, res:Response)=> {
+    let {username,backgroundOption} = req.body
+
+
+    if(req.session && req.session.user) {
+        let userActive=req.session.user.email
+        console.log(`u: ${userActive}`)
+        let user= await UserServices.findEmail(userActive)
+
+        if(user) {
+            user.username = username
+            user.perfil = backgroundOption
+            user.save()
+            let userUpdated=req.session.user=user
+            res.redirect('/chat')
+        }
+    }
+
+}

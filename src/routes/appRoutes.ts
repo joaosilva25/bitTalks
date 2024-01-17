@@ -21,6 +21,7 @@ routes.post('/newPassword/create/:token',loginController.createNewPass)
 routes.get('/chat',loginController.showChat)
 routes.get('/logout',logoutController.logoutUser)
 routes.get('/editUser',loginController.showEditUser)
+routes.post('/editUser',loginController.editUser)
 
 
 export default routes

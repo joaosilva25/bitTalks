@@ -6,7 +6,7 @@ import appRoutes from './routes/appRoutes';
 import mustache from 'mustache-express';
 import session from 'express-session';
 import http from 'http';
-import {Server} from 'socket.io'
+import {Server} from 'socket.io';
 
 
 dotenv.config()
