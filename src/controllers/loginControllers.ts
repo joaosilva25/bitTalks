@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import * as UserServices from '../services/UserServices'
 import bcryptjs from 'bcryptjs'
-import users from '../models/Users';
+import Users from '../models/Users';
 
 
 export const register= async(req:Request,res:Response)=> {
@@ -170,7 +170,7 @@ export const showCreateNewPass=async(req:Request,res:Response) => {
     console.log(userToken)
 
     if(userToken) {
-        let tokenUser=await users.findOne({token:userToken})
+        let tokenUser=await Users.findOne({token:userToken})
         let emailUserToken=tokenUser.email
         if(tokenUser) {
             console.log('Encontrado')
@@ -230,7 +230,7 @@ export const sendEmailNewPass=async(req:Request,res:Response) => {
     
     if(userTrue) {
         console.log(userToken)
-        let addToken=await users.findOneAndUpdate(
+        let addToken=await Users.findOneAndUpdate(
             {email:email},
             {token:userToken}
         )
@@ -282,7 +282,7 @@ export const createNewPass=async(req:Request,res:Response) => {
     }
 
     try {
-        let searchUser= await users.findOne({email})
+        let searchUser= await Users.findOne({email})
 
         if (searchUser) {
             searchUser.password=hashPass
