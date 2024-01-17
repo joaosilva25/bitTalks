@@ -1,18 +1,18 @@
-import users from "../models/Users";
+import Users from "../models/Users";
 import bcryptjs from 'bcryptjs';
 import nodemailer from 'nodemailer'
 
 
 export const findAll = () => {
-    return users.find({})
+    return Users.find({})
 }
 
 export const createUser = async(username:string,password:string,email:string,codeConfirm:string,token:string,perfil:string)=> {
-    const hasEmail = await users.findOne({email:email})
-    const hasUser = await users.findOne({username:username})
+    const hasEmail = await Users.findOne({email:email})
+    const hasUser = await Users.findOne({username:username})
 
    if(!hasEmail && !hasUser) {
-        let userCreate=new users();
+        let userCreate=new Users();
         userCreate.username = username
         userCreate.password = password
         userCreate.email = email
@@ -36,7 +36,7 @@ export const findPassword = async(passwordText:string,encrypted:string)=> {
 }
 
 export const findEmail= async(email:string)=> {
-    let userSearch=await users.findOne({email})
+    let userSearch=await Users.findOne({email})
     return userSearch
 }
 
@@ -78,7 +78,7 @@ export const sendConfirmationEmail = async(email:string,codeCreated:string)=> {
 }
 
 export const deleteUser=async(id:string)=> {
-    let deleted=await users.findOneAndDelete({id:id})
+    let deleted=await Users.findOneAndDelete({id:id})
     return deleted
 }
 
