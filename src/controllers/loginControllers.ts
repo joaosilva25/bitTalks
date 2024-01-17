@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import * as UserServices from '../services/UserServices'
 import bcryptjs from 'bcryptjs'
-import Users from '../models/Users';
+import Users from '../models/Users'
 
 
 export const register= async(req:Request,res:Response)=> {
