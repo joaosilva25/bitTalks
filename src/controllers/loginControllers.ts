@@ -4,6 +4,7 @@ import bcryptjs from 'bcryptjs';
 import Users from '../models/Users';
 
 
+
 export const register= async(req:Request,res:Response)=> {
     
     try {
