@@ -1,6 +1,6 @@
 import {Router} from 'express';
-import * as loginController from '../controllers/loginControllers'
-import * as logoutController from '../controllers/logoutControllers'
+import * as loginController from '../controllers/loginControllers';
+import * as logoutController from '../controllers/logoutControllers';
 
 
 
