@@ -20,6 +20,6 @@ const schema = new Schema({
     perfil:{type:String,required:true},
 })
 
-const modelName:string = 'Users';
+const modelName:string = 'users';
 
-export default (connection && connection.models[modelName])?? model<UsersType>(modelName,schema,'users')
+export default (connection && connection.models[modelName])?? model<UsersType>(modelName,schema)
