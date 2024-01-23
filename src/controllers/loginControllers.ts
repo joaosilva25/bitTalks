@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import * as UserServices from '../services/UserServices';
 import bcryptjs from 'bcryptjs';
-import Users from '../models/Users';
+import Users from 'C:\Users\Pichau\Documents\Programação\NodeJS\projetos\nodeJSBitTalks\src\models\Users.ts';
 
 
 

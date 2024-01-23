@@ -112,6 +112,8 @@ app.engine('mustache',mustache())
 
 app.use(express.static(path.join(__dirname,'../public')));
 app.use(express.urlencoded({extended:true}))
+app.use('/node_modules', express.static(__dirname + '/node_modules'));
+
 
 app.use(appRoutes)
 
