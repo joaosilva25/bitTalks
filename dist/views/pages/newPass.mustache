@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image.png" href="/images/bitLogo.png">
+    <title>Nova Senha</title>
+</head>
+<body>
+    {{#showInput}}
+    <div class="container-fluid">
+        <div class="login_area d-flex align-items-center justify-content-center flex-column">
+            <h5 class="title">Esqueceu sua senha ?</h5>
+            <p class="subtitle">Informe seu e-mail cadastrado no campo abaixo para que possamos enviar as instruções de redefinição de senha.</p>
+            <div class="box_login d-flex justify-content-center">
+                <form method="POST" class="d-flex flex-column" action="/newPassword">
+                    <input type="email" placeholder="email" name="email"><br>
+                    <input type="submit" value="Enviar">
+                    <p class="msg_For_User">{{msgForUser}}</p>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/showInput}}
+
+    {{^showInput}}
+    <div class="container-fluid">
+        <div class="login_area d-flex align-items-center justify-content-center flex-column">
+            <h5 class="title">Crie sua nova Senha</h5>
+            <p class="subtitle">Digite abaixo sua nova senha de acesso</p>
+            <div class="box_login d-flex justify-content-center">
+                <form method="POST" class="d-flex flex-column" action="/newPassword/create/:token">
+                    <input type="email" value="{{emailUserToken}}" name="email" readOnly><br>
+                    <input type="password" placeholder="password" name="password"><br>
+                    <input type="submit" value="Enviar">
+                    <p class="msg_For_User">{{msgForUser}}</p>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/showInput}}
+
+
+
+    <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

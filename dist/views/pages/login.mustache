@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image.png" href="/images/bitLogo.png">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="login_area d-flex align-items-center justify-content-center flex-column">
+            <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+            <h1>Welcome to <span class="blue_text">BitTalks ...</span></h1>
+            <div class="box_login d-flex justify-content-center">
+                <form method="POST" class="d-flex flex-column" action="/login">
+                    <input type="email" placeholder="email" name="email"><br>
+                    <input type="password" placeholder="Senha" name="password"><br>
+                    <a href='/newPassword' class="FG_password">Forget your password?</a>
+                    <input type="submit" value="Login">
+                    <p class="msg_For_User">{{msgForUser}}</p>
+                    <p>Não registrado? <span class="blue_text"><a href="/register">Crie sua conta</a></span></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

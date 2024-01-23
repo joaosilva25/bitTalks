@@ -33,6 +33,7 @@
     "@types/nodemailer": "^6.4.14",
     "@types/nodemon": "^1.19.6",
     "@types/socket.io": "^3.0.2",
+    "copyfiles": "^2.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
@@ -40,10 +41,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc -w && node dist/server.js",
     "start-dev": "nodemon -e ts,json,mustache,html,css,js src/server.ts",
-    "start-web": "pm2 start src/server.ts --watch"
+    "start-web": "node dist/server.js"
   },
   "author": "",
   "license": "ISC",
