@@ -106,7 +106,7 @@ io.on('connection',(socket)=> {
 
 
 app.set('view engine','mustache');
-app.set('views',path.join(__dirname,'views'));
+app.set('views',path.join(path.join(__dirname,'views')));
 app.engine('mustache',mustache())
 
 
