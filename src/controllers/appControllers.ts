@@ -230,7 +230,7 @@ export const sendEmailNewPass=async(req:Request,res:Response) => {
                 let sesh=req.session.user=userTrue
             }
 
-            res.render('Pages/newPass', {
+            res.render('pages/newPass', {
                 msgForUser,
                 showInput,
             })
