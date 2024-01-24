@@ -50,14 +50,9 @@ io.on('connection',(socket)=> {
 
     if(!userExist) {
       userConected.push({user:userName,perfilUser:perfil})
-      console.log(`userConexãoAtiva:${userName}`)
     }
   }
-  else {
-    console.log("Usuário não conectado")
-  }
 
-  console.log(`ConectadosList:${JSON.stringify(userConected)}`)
 
 
   socket.emit('join-user',userConected)
@@ -72,12 +67,8 @@ io.on('connection',(socket)=> {
     const seshOff=(socket.request as any).session.user.username
 
     let userIndex=userConected.findIndex(u=>u.user===seshOff)
-    console.log(`Index do User removido:${userIndex}`)
     let offUser=(userConected.splice(userIndex,1))
 
-    console.log(`Disconnected: ${JSON.stringify(offUser)}`)
-
-    console.log(`AfterDisconnectList: ${JSON.stringify(userConected)}`)
 
     io.emit('disconnected',{
         exitedUser:offUser,

@@ -24,11 +24,8 @@ export const register= async(req:Request,res:Response)=> {
 
 
         if (createUser && sendEmail) {
-            console.log(`UserCriado: ${createUser.username}`)
-            console.log(`emailEnviado:${sendEmail}`)
             if (req.session) {
                 let sesh=req.session.usercode=createUser
-                console.log(`Session: ${sesh}`)
             }
             res.redirect('/confirmation')
         }
@@ -41,7 +38,7 @@ export const register= async(req:Request,res:Response)=> {
         }
     }
     catch (err) {
-         console.log(err)
+         res.status(400).json({error:"Erro inesperado tente novamente mais tarde"})
     }
 
 }
@@ -52,17 +49,11 @@ export const login=async(req:Request,res:Response,next:NextFunction)=> {
 
     const {email,password}=req.body
 
-
     const user= await UserServices.findEmail(email)
-    console.log(user)
 
 
     if(user) {
-        console.log("User=OK")
         const comparePass= await UserServices.findPassword(password,user.password)
-        console.log(comparePass)
-        console.log(user.password)
-        console.log(password)
         if(comparePass) {
             if(req.session) {
                 if(!req.session.user) {
@@ -109,8 +100,6 @@ export const confirmatedUser=async (req:Request,res:Response)=> {
         if(req.session && req.session.usercode) {
             let seshRestore= await req.session.usercode
             let codeCompare= await req.session.usercode.codeConfirm
-            console.log(codeCompare)
-            console.log(seshRestore)
             
             if(codeCompare===codeConfirm.toString()) {
                 let username= await req.session.usercode.username
@@ -124,6 +113,8 @@ export const confirmatedUser=async (req:Request,res:Response)=> {
 
                 let addUserBD= await UserServices.createUser(username,hashPassword,email,codeCompare,token,perfil)
                 await addUserBD.save()
+
+                req.session.destroy
 
                 return res.redirect('/')
             }
@@ -167,13 +158,11 @@ export const showRegisterNewPass=async(req:Request,res:Response) => {
 
 export const showCreateNewPass=async(req:Request,res:Response) => {
     let userToken=req.params.token
-    console.log(userToken)
 
     if(userToken) {
         let tokenUser=await Users.findOne({token:userToken})
         let emailUserToken=tokenUser.email
         if(tokenUser) {
-            console.log('Encontrado')
             res.render('pages/newPass', {
                 emailUserToken
             })
@@ -191,7 +180,6 @@ export const testLoggedArea=(req:Request,res:Response) => {
 export const showChat=async(req:Request,res:Response) => {
     res.render('pages/chat')
 
-    console.log(req.session)
 }
 
 export const showEditUser=async(req:Request,res:Response) => {
@@ -223,13 +211,11 @@ export const sendEmailNewPass=async(req:Request,res:Response) => {
 
     let userTrue=await UserServices.findEmail(email)
 
-    console.log(userTrue)
 
     let userToken=(Math.random()*250).toString(16)
 
     
     if(userTrue) {
-        console.log(userToken)
         let addToken=await Users.findOneAndUpdate(
             {email:email},
             {token:userToken}
@@ -240,11 +226,8 @@ export const sendEmailNewPass=async(req:Request,res:Response) => {
         
             let sendEmailPass=await UserServices.sendNewPass(email,userToken)
 
-            console.log(`sendedNewPassEmail'${sendEmailPass}`)
-
             if(req.session) {
                 let sesh=req.session.user=userTrue
-                console.log(sesh)
             }
 
             res.render('Pages/newPass', {
@@ -287,7 +270,6 @@ export const createNewPass=async(req:Request,res:Response) => {
         if (searchUser) {
             searchUser.password=hashPass
             await searchUser.save()
-            console.log("senha alterada com sucesso")
             res.redirect('/')
         }
         else {
@@ -300,7 +282,6 @@ export const createNewPass=async(req:Request,res:Response) => {
     }
     catch(error) {
         res.send('erro')
-        console.log('erro')
     }
 }
 
@@ -310,12 +291,17 @@ export const editUser=async (req:Request, res:Response)=> {
 
     if(req.session && req.session.user) {
         let userActive=req.session.user.email
-        console.log(`u: ${userActive}`)
         let user= await UserServices.findEmail(userActive)
 
         if(user) {
-            user.username = username
-            user.perfil = backgroundOption
+            user.username=username
+
+            if(!backgroundOption) {
+                user.perfil=user.perfil
+            }
+            else {
+                user.perfil=backgroundOption
+            }
             user.save()
             let userUpdated=req.session.user=user
             res.redirect('/chat')

@@ -27,11 +27,6 @@ export const createUser = async(username:string,password:string,email:string,cod
 export const findPassword = async(passwordText:string,encrypted:string)=> {
     let descriptedPass=bcryptjs.compareSync(passwordText,encrypted)
 
-    console.log('Password Text:', passwordText);
-    console.log('Encrypted Password:', encrypted);
-    console.log('Resultado da comparação:', descriptedPass);
-
-
     return descriptedPass
 }
 
@@ -68,12 +63,11 @@ export const sendConfirmationEmail = async(email:string,codeCreated:string)=> {
                     </div>
                 </body>`
         }
-        console.log('Email enviado com sucesso')
         let send=await transport.sendMail(message)
         return send
     }
     catch(error) {
-        console.log('Erro inesperado com o envio de email')
+        console.error(error)
     }
 }
 
@@ -112,12 +106,11 @@ export const sendNewPass= async(email:string,token:string)=> {
                 </body>`
         }
 
-        console.log('Email enviado com sucesso')
         let send=await transport.sendMail(message)
         return send
 
     }
     catch(error) {
-        console.log('Erro inesperado com o envio de email')
+        console.error(error)
     }
 }

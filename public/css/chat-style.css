@@ -11,7 +11,7 @@
     height: 100vh;
 }
 .chatPage {
-    position: relative;top:8vh;
+    position: relative;top:10vh;
     height:600px;
     width:1000px;
 }
@@ -309,6 +309,7 @@ input[type="text"] {
     border:none;
     background-color: transparent;
     color:white;
+    outline: none;
 }
 
 .editButtons{
