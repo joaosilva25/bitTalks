@@ -216,7 +216,7 @@ const sendEmailNewPass = (req, res) => __awaiter(void 0, void 0, void 0, functio
             if (req.session) {
                 let sesh = req.session.user = userTrue;
             }
-            res.render('Pages/newPass', {
+            res.render('pages/newPass', {
                 msgForUser,
                 showInput,
             });
