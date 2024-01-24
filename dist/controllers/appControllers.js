@@ -54,11 +54,8 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         let createUser = yield UserServices.createUser(username, password, email, codeAleatory, token, backgroundOption);
         let sendEmail = yield UserServices.sendConfirmationEmail(email, codeAleatory);
         if (createUser && sendEmail) {
-            console.log(`UserCriado: ${createUser.username}`);
-            console.log(`emailEnviado:${sendEmail}`);
             if (req.session) {
                 let sesh = req.session.usercode = createUser;
-                console.log(`Session: ${sesh}`);
             }
             res.redirect('/confirmation');
         }
@@ -70,7 +67,7 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         }
     }
     catch (err) {
-        console.log(err);
+        res.status(400).json({ error: "Erro inesperado tente novamente mais tarde" });
     }
 });
 exports.register = register;
@@ -78,13 +75,8 @@ const login = (req, res, next) => __awaiter(void 0, void 0, void 0, function* ()
     let msgForUser;
     const { email, password } = req.body;
     const user = yield UserServices.findEmail(email);
-    console.log(user);
     if (user) {
-        console.log("User=OK");
         const comparePass = yield UserServices.findPassword(password, user.password);
-        console.log(comparePass);
-        console.log(user.password);
-        console.log(password);
         if (comparePass) {
             if (req.session) {
                 if (!req.session.user) {
@@ -127,8 +119,6 @@ const confirmatedUser = (req, res) => __awaiter(void 0, void 0, void 0, function
         if (req.session && req.session.usercode) {
             let seshRestore = yield req.session.usercode;
             let codeCompare = yield req.session.usercode.codeConfirm;
-            console.log(codeCompare);
-            console.log(seshRestore);
             if (codeCompare === codeConfirm.toString()) {
                 let username = yield req.session.usercode.username;
                 let email = yield req.session.usercode.email;
@@ -138,6 +128,7 @@ const confirmatedUser = (req, res) => __awaiter(void 0, void 0, void 0, function
                 const hashPassword = bcryptjs_1.default.hashSync(password, 10);
                 let addUserBD = yield UserServices.createUser(username, hashPassword, email, codeCompare, token, perfil);
                 yield addUserBD.save();
+                req.session.destroy;
                 return res.redirect('/');
             }
             else {
@@ -174,12 +165,10 @@ const showRegisterNewPass = (req, res) => __awaiter(void 0, void 0, void 0, func
 exports.showRegisterNewPass = showRegisterNewPass;
 const showCreateNewPass = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let userToken = req.params.token;
-    console.log(userToken);
     if (userToken) {
         let tokenUser = yield Users_1.default.findOne({ token: userToken });
         let emailUserToken = tokenUser.email;
         if (tokenUser) {
-            console.log('Encontrado');
             res.render('pages/newPass', {
                 emailUserToken
             });
@@ -193,7 +182,6 @@ const testLoggedArea = (req, res) => {
 exports.testLoggedArea = testLoggedArea;
 const showChat = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.render('pages/chat');
-    console.log(req.session);
 });
 exports.showChat = showChat;
 const showEditUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -219,18 +207,14 @@ const sendEmailNewPass = (req, res) => __awaiter(void 0, void 0, void 0, functio
         });
     }
     let userTrue = yield UserServices.findEmail(email);
-    console.log(userTrue);
     let userToken = (Math.random() * 250).toString(16);
     if (userTrue) {
-        console.log(userToken);
         let addToken = yield Users_1.default.findOneAndUpdate({ email: email }, { token: userToken });
         if (addToken) {
             msgForUser = "Email enviado com sucesso";
             let sendEmailPass = yield UserServices.sendNewPass(email, userToken);
-            console.log(`sendedNewPassEmail'${sendEmailPass}`);
             if (req.session) {
                 let sesh = req.session.user = userTrue;
-                console.log(sesh);
             }
             res.render('Pages/newPass', {
                 msgForUser,
@@ -267,7 +251,6 @@ const createNewPass = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         if (searchUser) {
             searchUser.password = hashPass;
             yield searchUser.save();
-            console.log("senha alterada com sucesso");
             res.redirect('/');
         }
         else {
@@ -280,7 +263,6 @@ const createNewPass = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
     catch (error) {
         res.send('erro');
-        console.log('erro');
     }
 });
 exports.createNewPass = createNewPass;
@@ -288,11 +270,15 @@ const editUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let { username, backgroundOption } = req.body;
     if (req.session && req.session.user) {
         let userActive = req.session.user.email;
-        console.log(`u: ${userActive}`);
         let user = yield UserServices.findEmail(userActive);
         if (user) {
             user.username = username;
-            user.perfil = backgroundOption;
+            if (!backgroundOption) {
+                user.perfil = user.perfil;
+            }
+            else {
+                user.perfil = backgroundOption;
+            }
             user.save();
             let userUpdated = req.session.user = user;
             res.redirect('/chat');

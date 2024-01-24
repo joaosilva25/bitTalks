@@ -4,7 +4,6 @@ exports.logoutUser = void 0;
 const logoutUser = (req, res) => {
     if (req.session && req.session.user) {
         let sessionActived = req.session.user.username;
-        console.log(`Sessão apagada:${sessionActived}`);
         req.session.destroy((err) => {
             if (err) {
                 res.status(500).send("Erro em finalizar sessão");

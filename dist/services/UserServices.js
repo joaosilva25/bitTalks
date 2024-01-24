@@ -37,9 +37,6 @@ const createUser = (username, password, email, codeConfirm, token, perfil) => __
 exports.createUser = createUser;
 const findPassword = (passwordText, encrypted) => __awaiter(void 0, void 0, void 0, function* () {
     let descriptedPass = bcryptjs_1.default.compareSync(passwordText, encrypted);
-    console.log('Password Text:', passwordText);
-    console.log('Encrypted Password:', encrypted);
-    console.log('Resultado da comparação:', descriptedPass);
     return descriptedPass;
 });
 exports.findPassword = findPassword;
@@ -75,12 +72,11 @@ const sendConfirmationEmail = (email, codeCreated) => __awaiter(void 0, void 0, 
                     </div>
                 </body>`
         };
-        console.log('Email enviado com sucesso');
         let send = yield transport.sendMail(message);
         return send;
     }
     catch (error) {
-        console.log('Erro inesperado com o envio de email');
+        console.error(error);
     }
 });
 exports.sendConfirmationEmail = sendConfirmationEmail;
@@ -114,12 +110,11 @@ const sendNewPass = (email, token) => __awaiter(void 0, void 0, void 0, function
                     </div>
                 </body>`
         };
-        console.log('Email enviado com sucesso');
         let send = yield transport.sendMail(message);
         return send;
     }
     catch (error) {
-        console.log('Erro inesperado com o envio de email');
+        console.error(error);
     }
 });
 exports.sendNewPass = sendNewPass;
