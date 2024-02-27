@@ -84,9 +84,11 @@
     margin-left: 20px;
 }
 
-p {
+.textChat {
     font-size:14px;
     font-weight: 300;
+    width: 250px;
+    word-wrap: break-word;
 }
 
 .subTitle {
@@ -276,7 +278,7 @@ h1 {
 .editMain {
     background: linear-gradient(370deg, rgba(40,42,55,1) 9%, rgba(62,64,77,1) 79%);
     height:400px;
-    width:400px;
+    width:max(280px,20vw);
     margin-left: auto;
     margin-right: auto;
     position:relative;top:30vh;
@@ -354,4 +356,170 @@ select {
     position: relative;left:20px;top:10px;
     color: #7b7b7b;
     outline:none;
+}
+
+option{
+   color: #7b7b7b;
+}
+
+
+
+
+
+@media screen and (min-width: 851px) and (max-width: 1050px) {
+
+    .chatPage {
+        width:800px;
+    }
+
+    .msgTextSended {
+        width: 250px;
+        position: relative;left:170px;
+    }
+
+    .msgText {
+        width: 250px;
+    }
+    
+    
+    
+
+}
+
+
+
+@media screen and (min-width: 500px) and (max-width: 851px) {
+
+    .main {
+        flex-direction: column;
+        position: relative;bottom:5vh;
+    }
+
+    .chatPage {
+        width:450px;
+        flex:none;
+    }
+
+    .chatArea {
+        order: 2;
+    }
+
+    .msgTextSended {
+        width: 250px;
+        position: relative;left:100px;
+    }
+
+    .msgText {
+        width: 250px;
+    }
+
+    .chatUsers {
+        height: 180px;     
+        min-width: 475px;
+        order: 1;
+        flex:none;
+        overflow-y: hidden;
+        overflow-x: auto;
+        position: relative;bottom: 50px;
+    }
+
+    .userField {
+        width: 200px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .textChat {
+        width: 150px;
+        word-wrap: break-word;
+    }
+
+    .textArea {
+        position: relative;bottom:60px;
+    }
+
+
+    .buttonsArea {
+        min-width: 200px;
+        position: relative;top:10px;left:300px;
+    }
+    
+    
+
+
+}
+
+@media screen and (min-width:320px) and (max-width: 500px) {
+
+    .container-fluid {
+        background-color: #282a37;
+        height: 850px;
+    }
+
+    .main {
+        flex-direction: column;
+        position: relative;bottom:5vh;
+    }
+
+    .chatPage {
+        width:300px;
+        flex:none;
+    }
+
+    .chatArea {
+        order: 2;
+    }
+
+    .msgTextSended {
+        width: 200px;
+        position: relative;left:50px;
+    }
+
+    .msgText {
+        width: 200px;
+    }
+
+    .chatUsers {
+        height: 160px;     
+        min-width: 475px;
+        order: 1;
+        flex:none;
+        overflow-y: hidden;
+        overflow-x: auto;
+        position: relative;bottom: 50px;
+    }
+
+    .userField {
+        width: 180px;
+        height: 100px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .mainText {
+       height: 0px;
+    }
+
+    .textChat {
+        width: 150px;
+        word-wrap: break-word;
+    }
+
+    .textArea {
+        position: relative;bottom:38px;
+        background-color:#222430;
+    }
+
+    textarea {
+        padding: 10px;
+        width:250px;
+        position: relative;bottom:0px;
+    }
+
+
+    .buttonsArea {
+        width: 100vw;
+        position: relative;top:20px;left:190px;
+    }
+
 }

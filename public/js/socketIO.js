@@ -9,7 +9,7 @@ const socket=io()
 
 
 function titleUser(username) {
-    document.title=`bitTalks (${username})`
+    document.title=`bitTalks ( ${username} )`
 }
 
 socket.on("join-request",titleUser);
@@ -28,13 +28,13 @@ function addMessage(type,user,msg) {
         case 'msg':
             chatUser.innerHTML+=`<li class="msgText">
                                     <p class="userTitle">${user}</p>
-                                    <p>${msg}</p>
+                                    <p class="textChat">${msg}</p>
                                 </li>`
         break;
         case 'msgSended':
             chatUser.innerHTML+=`<li class="msgTextSended">
                                     <p class="userTitle">${user}</p>
-                                    <p>${msg}</p>
+                                    <p class="textChat">${msg}</p>
                                 </li>`
         break;
     }

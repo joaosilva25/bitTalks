@@ -15,6 +15,16 @@
     background: linear-gradient(370deg, rgba(40,42,55,1) 9%, rgba(62,64,77,1) 79%);
     padding:70px 50px 60px 50px;
     position:relative;top:30px;
+    width:max(300px,25vw);
+    height: 400px;
+}
+
+.box_login_register {
+    background: linear-gradient(370deg, rgba(40,42,55,1) 9%, rgba(62,64,77,1) 79%);
+    padding:70px 50px 60px 50px;
+    position:relative;top:30px;
+    width:max(300px,25vw);
+    height: 500px;
 }
 
 .login_area {
@@ -26,13 +36,15 @@
 
 p {
     font-weight: bold;
-    font-size:15px;
+    font-size:max(12px,0.8vw);
     color:white;
     text-align: center;
+    width:max(200px,20vw);
 }
 
 input[type="email"], input[type="password"], input[type="text"] {
     padding:5px;
+    width: max(200px,18vw);
     padding-left: 10px;
     box-shadow: 0px 4px 20px 0px #226bab4a;
     border:none;
@@ -47,6 +59,7 @@ input:focus {
 
 input[type="submit"] {
     padding:6px;
+    width: max(200px,18vw);
     background-color: #226CAB;
     box-shadow: 0px 4px 20px 0px #226bab87;
     color:white;
@@ -67,11 +80,17 @@ input[type="submit"]:active {
 
 h1 {
     color:white;
+    font-size: max(25px,2vw);
 }
+
+
 
 form {
     gap:10px;
-    width:18vw;
+    width:max(300px,25vw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .FG_password {
@@ -79,12 +98,13 @@ form {
     margin-top: -20px;
     margin-bottom: 10px;
     font-size:12px;
+    width: max(200px,18vw);
 }
 
 ion-icon {
-    font-size:50px;
+    font-size:max(30px,3vw);
     color:#226CAB;
-    position: relative;top:15px;left:160px;
+    position: relative;top:max(0.5vw);left:max(100px,8vw);
 }
 
 a {
@@ -99,18 +119,18 @@ a {
 
 .title {
     color:white;
-    font-size: 28px;
+    font-size: max(18px,2vw);
     font-weight: bold;
     text-align: left;
     margin-bottom: 10px;
-    width:350px;
+    width:max(200px,20vw);
 }
 
 .subtitle {
     color: white;
-    font-size: 12px;
+    font-size:max(10px,0.8vw);
     text-align: left;
-    width:350px;
+    width:max(200px,20vw);
     font-weight: 300;
 }
 
