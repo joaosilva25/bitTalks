@@ -83,8 +83,9 @@ io.on('connection',(socket)=> {
 
   socket.on('send-message',(msg:string)=> {
       let obj= {
-        user:(socket.request as any).session.user.username,
-        message:msg
+        userBg:(socket.request as any).session.user.perfil,
+        message:msg,
+        userName:(socket.request as any).session.user.username,
       }
     socket.emit('send-User',obj)
     socket.broadcast.emit('send-message',obj)

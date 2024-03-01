@@ -9,9 +9,9 @@ export const register= async(req:Request,res:Response)=> {
     try {
         let {username,password,email}=req.body
 
-        if(!username && !password && !email) {
-            let message = "Completly the inputs to continue"
-            res.render('pages/register', {
+        if(!username || !password || !email) {
+            let message = "Preencha os campos para prosseguir"
+            return res.render('pages/register', {
                 message
             })
         }
@@ -20,25 +20,26 @@ export const register= async(req:Request,res:Response)=> {
         const token='null'
         let {backgroundOption}=req.body
         let createUser = await UserServices.createUser(username,password,email,codeAleatory,token,backgroundOption)
-        let sendEmail=await UserServices.sendConfirmationEmail(email,codeAleatory)
+     
 
 
-        if (createUser && sendEmail) {
+        if (createUser) {
             if (req.session) {
+                await UserServices.sendConfirmationEmail(email,codeAleatory)
                 let sesh=req.session.usercode=createUser
             }
-            res.redirect('/confirmation')
+            return res.redirect('/confirmation')
         }
 
         else {
-            let message = "User already registered"
-            res.render('pages/register', {
+            let message = "Usuário já registrado"
+            return res.render('pages/register', {
                 message
             })
         }
     }
     catch (err) {
-         res.status(400).json({error:"Erro inesperado tente novamente mais tarde"})
+         return res.status(400).json({error:"Erro inesperado tente novamente mais tarde"})
     }
 
 }
@@ -51,33 +52,40 @@ export const login=async(req:Request,res:Response,next:NextFunction)=> {
 
     const user= await UserServices.findEmail(email)
 
-
-    if(user) {
-        const comparePass= await UserServices.findPassword(password,user.password)
-        if(comparePass) {
-            if(req.session) {
-                if(!req.session.user) {
-                    let sesh=req.session.user=user
-                    res.redirect('/chat')
+    if(email && password) {
+        if(user) {
+            const comparePass= await UserServices.findPassword(password,user.password)
+            if(comparePass) {
+                if(req.session) {
+                    if(!req.session.user) {
+                        let sesh=req.session.user=user
+                        res.redirect('/chat')
+                    }
+                    else {
+                        let msgForUser='Você já está logado em sua conta'
+                        return res.render('pages/login', {
+                            msgForUser
+                        })
+                    }
                 }
-                else {
-                    let msgForUser='Você já está logado em sua conta'
-                    res.render('pages/login', {
-                        msgForUser
-                    })
-                }
+            }
+            else {
+                msgForUser='Senha Incorreta'
+                return res.render('pages/login', {
+                    msgForUser
+                })
             }
         }
         else {
-            msgForUser='Incorrect Password try again'
-            res.render('pages/login', {
+            msgForUser='Usuário não registrado'
+            return res.render('pages/login', {
                 msgForUser
             })
         }
     }
     else {
-        msgForUser='User not already Registered'
-        res.render('pages/login', {
+        msgForUser='Preencha os campos para prosseguir'
+        return res.render('pages/login', {
             msgForUser
         })
     }
@@ -91,7 +99,7 @@ export const confirmatedUser=async (req:Request,res:Response)=> {
 
     if(!codeConfirm) {
         msgForUser="Insira o código para prosseguir"
-        res.render('pages/userConfirm', {
+        return res.render('pages/userConfirm', {
             msgForUser
         })
     }
@@ -288,24 +296,29 @@ export const createNewPass=async(req:Request,res:Response) => {
 export const editUser=async (req:Request, res:Response)=> {
     let {username,backgroundOption} = req.body
 
+    if(username) {
 
-    if(req.session && req.session.user) {
-        let userActive=req.session.user.email
-        let user= await UserServices.findEmail(userActive)
+        if(req.session && req.session.user) {
+            let userActive=req.session.user.email
+            let user= await UserServices.findEmail(userActive)
 
-        if(user) {
-            user.username=username
+            if(user) {
+                user.username=username
 
-            if(!backgroundOption) {
-                user.perfil=user.perfil
+                if(!backgroundOption) {
+                    user.perfil=user.perfil
+                }
+                else {
+                    user.perfil=backgroundOption
+                }
+                user.save()
+                let userUpdated=req.session.user=user
+                return res.redirect('/chat')
             }
-            else {
-                user.perfil=backgroundOption
-            }
-            user.save()
-            let userUpdated=req.session.user=user
-            res.redirect('/chat')
         }
+    }
+    else {
+        res.redirect('/chat')
     }
 
 }

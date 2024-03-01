@@ -3,10 +3,22 @@
     margin:0px;
     padding:0px;
     color:white;
+    font-family: "Quicksand", sans-serif;
+}
+
+
+:root {
+    --bg-color:#0e6391;
+    --bg-areas-color:#f9fafc;
+    --primary-color:#d4637d;
+    --secundary-color:#226CAB;
+
 }
 
 .container-fluid {
-    background-color: #282a37;
+    background-color: white;
+    background-position: center;
+    background-size: cover;
     width:100vw;
     height: 100vh;
 }
@@ -17,22 +29,26 @@
 }
 
 .main {
-    height:600px;
+    height:700px;
+    gap:8px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 30px;
 }
 
-.chatArea {
-    background-color: #3e404d;
-    overflow-y:auto;
-    max-height: 600px;
-}
+
 
 
 /*Style chatUsers*/
 
 .chatUsers {
-    background-color: #282a37;
+    background-color:var(--secundary-color);
     max-height: 600px;
     overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .chatUsers::-webkit-scrollbar-track {
@@ -57,8 +73,6 @@
 .userField {
     width:290px;
     height: 100px;
-    background-color: #3e414e;
-    box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     padding:20px;
     color:white;
@@ -69,15 +83,15 @@
 
 
 
-
 .perfilUser {
     width:50px;
     height: 50px;
+    border:none;
     border-radius:50%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     background-position: center;
     background-size: cover;
     background-color: #282a37;
-    border:1px solid  #3582c6;
 }
 
 .userStatus {
@@ -86,19 +100,28 @@
 
 .textChat {
     font-size:14px;
-    font-weight: 300;
+    font-weight: 400;
     width: 250px;
     word-wrap: break-word;
 }
 
+.titleUserArea {
+    position: relative;top:30px;right:50px;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--bg-areas-color);
+}
+
 .subTitle {
-    font-weight: 100;
+    font-weight: 300;
     font-size:14px;
+    color: var(--bg-areas-color);
 }
 
 .userTitle {
     font-size:16px;
-    font-weight:bold;
+    color: var(--bg-areas-color);
+    font-weight:600;
 }
 
 .mood {
@@ -121,9 +144,11 @@
 /* Style chatArea */
 
 .chatArea {
-    background: linear-gradient(540deg, rgba(40,42,55,1) 9%, rgba(62,64,77,1) 79%);
+    background-color: var(--bg-areas-color);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     overflow-y:auto;
-    max-height: 600px;
+    max-height: 680px;
+    border-radius: 30px;
 }
 
 .chat {
@@ -146,40 +171,68 @@
     border-radius: 12px;
 }
 
+.textChat {
+    margin-top: 10px;
+}
+
+.titleUserChat {
+    font-weight: 600;
+    font-size: 35px;
+    color: var(--secundary-color);
+    position: relative;top:20px;left:50px
+}
 
 .joined {
-    color:#0f4e85;
+    color:var(--secundary-color);
 }
 
 .disjoined {
-    color:red;
+    color:rgba(255, 51, 102, 0.842);
 }
 
 .msgText {
-    background-color: #a1acb6;
-    box-shadow: 0px 1px 10px 0px #3582c677;
+    background-color:#226bab8a;
     border-radius: 20px;
     padding:20px;
     max-width: 300px;
-    color:white;
+    color:rgb(0, 0, 0);
+   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     font-weight: bold;
     margin-top: 30px;
     margin-bottom: 30px;
 }
 
 .msgTextSended {
-    background-color:#3582c6;
-    box-shadow: 0px 1px 10px 0px #3582c677;
+    background-color: var(--secundary-color);
     border-radius: 20px;
     padding:20px;
     max-width: 300px;
     color:white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     font-weight: bold;
     margin-top: 30px;
     margin-bottom: 30px;
     position: relative;left:250px;
 }
 
+.circlePerfilMsg {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    background-size: cover;
+    background-position: center;
+}
+
+.userName2 {
+    color:var(--primary-color);
+    font-weight: 600;
+}
+
+.userName1 {
+    color:#ffffff;
+    font-weight: 600;
+}
 
 
 
@@ -187,11 +240,17 @@
 
 
 .textArea {
-    background-color: #3e404d;
     padding:10px;
     gap:18px;
-    border-radius:0px 0px 20px 20px;
     flex:1;
+    position: relative;bottom:90px;
+}
+
+.buttonsArea {
+    background-color:var(--bg-areas-color);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    position: relative;bottom:80px;
+    border-radius: 30px;
 }
 
 .exitButton,.editButton {
@@ -203,28 +262,29 @@
 
 .exitButton ion-icon {
     font-size: 40px;
-    color:#adadad75;
+    color: var(--secundary-color);
 }
 .editButton ion-icon {
     font-size: 40px;
-    color:#adadad75;
+    color: var(--secundary-color);
 }
 
-.editButton ion-icon:hover {
-    color:#3582c6;
+.editButton ion-icon:active {
+    color:#000000;
 }
 
-.exitButton ion-icon:hover {
-    color: #3582c6;
+.exitButton ion-icon:active {
+    color: #ffffff;
 }
 
 textarea {
     font-size:11px;
     width:400px;
-    border:1px solid #3582c6;
+    border: none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    background-color:var(--secundary-color);
     padding:10px;
     border-radius: 15px;
-    background-color:#3e404d;
     color:rgb(255, 255, 255);
     resize:none;
     min-height: 50px;
@@ -234,32 +294,11 @@ textarea {
     outline: none;
 }
 
-textarea:focus{
-    border:2px solid #3582c6;
-}
-textarea:active{
-    border:2px solid #3582c6;
+textarea::placeholder {
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.658);
 }
 
-
-.sendButton{
-    margin-top: 5px;;
-    padding:10px;
-    background-color: #3582c6;
-    box-shadow: 0px 1px 10px 0px #3582c677;
-    border-radius: 15%;
-    border:none;
-    position: relative;bottom:20px;
-}
-.sendButton:active{
-    background-color: white;
-}
-
-.sendButton ion-icon {
-    color: white;
-    font-size: 20px;
-    background-color: none;
-}
 
 .listUsers {
     list-style: none;
@@ -276,7 +315,6 @@ h1 {
 /* Style edit Area*/
 
 .editMain {
-    background: linear-gradient(370deg, rgba(40,42,55,1) 9%, rgba(62,64,77,1) 79%);
     height:400px;
     width:max(280px,20vw);
     margin-left: auto;
@@ -292,11 +330,11 @@ h1 {
 .perfilCircle {
     width: 150px;
     height: 150px;
-    background-color: black;
     border-radius: 50%;
-    border: 1px solid #0f4e85;
+    border: 3px solid var(--secundary-color);
     margin-left: auto;
     margin-right: auto;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     position:relative;bottom:60px;
 }
 
@@ -304,14 +342,17 @@ h1 {
     gap:10px;
 }
 
-input[type="text"] {
+.userChangeName {
     padding:5px;
     padding-left: 10px;
-    box-shadow: 0px 4px 20px 0px #226bab4a;
     border:none;
     background-color: transparent;
-    color:white;
+    color:var(--secundary-color);
     outline: none;
+    font-weight: 600;
+    font-size: 25px;
+    position: relative;bottom: 50px;
+    text-align: center;
 }
 
 .editButtons{
@@ -319,50 +360,53 @@ input[type="text"] {
     gap:30px;
 }
 
-input[type="submit"],.edit {
-    padding:10px;
-    box-shadow: 0px 4px 20px 0px #226bab4a;
+.userChangeName:focus {
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 2px 8px 0px;
+}
+
+input[type="submit"]{
+    padding:10px; 
     border:none;
-    background-color: transparent;
-    color:white;
+    background-color:#226CAB;
+    color:var(--bg-areas-color);
     font-weight: bold;
     margin-bottom: 20px;
-    border:none;
-    font-weight: 100;
+    border-radius: 30px;
+    font-weight: 500;
     width:100px;
+    transition: 0.5s linear;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    position: relative;bottom: 100px;
 }
 
 
-input[type="submit"]:hover {
-    background-color: #0f4e85;
-}
-
-.edit:hover {
-    background-color: #0f4e85;
-}
-
-.edit:active {
-    background-color: black;
+input[type="submit"]:active {
+    border-bottom: var(--bg-areas-color);
 }
 
 select {
-    width:150px;
-    height: 35px;
+    width:20px;
+    height: 20px;
     padding:5px;
     padding-left: 10px;
-    box-shadow: 0px 4px 20px 0px #226bab4a;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     border:none;
-    background-color: transparent;
-    position: relative;left:20px;top:10px;
-    color: #7b7b7b;
+    background-color:var(--secundary-color);
+    position: relative;left:160px;bottom:150px;
+    color:white;
     outline:none;
+    cursor: pointer;
+    border-radius: 50%;
 }
 
 option{
-   color: #7b7b7b;
+   color: white;
 }
 
-
+strong {
+    color: var(--secundary-color);
+    font-weight: 300;
+}
 
 
 
@@ -415,12 +459,12 @@ option{
 
     .chatUsers {
         height: 180px;     
-        min-width: 475px;
+        min-width: 450px;
         order: 1;
         flex:none;
         overflow-y: hidden;
         overflow-x: auto;
-        position: relative;bottom: 50px;
+        position: relative;bottom: 20px;
     }
 
     .userField {
@@ -435,7 +479,7 @@ option{
     }
 
     .textArea {
-        position: relative;bottom:60px;
+        position: relative;bottom:120px;
     }
 
 
@@ -452,7 +496,6 @@ option{
 @media screen and (min-width:320px) and (max-width: 500px) {
 
     .container-fluid {
-        background-color: #282a37;
         height: 850px;
     }
 
@@ -472,7 +515,7 @@ option{
 
     .msgTextSended {
         width: 200px;
-        position: relative;left:50px;
+        position: relative;left:10px;
     }
 
     .msgText {
@@ -480,13 +523,13 @@ option{
     }
 
     .chatUsers {
-        height: 160px;     
-        min-width: 475px;
+        min-width: 300px;
+        height: 160px; 
         order: 1;
         flex:none;
+        overflow-x:auto;
         overflow-y: hidden;
-        overflow-x: auto;
-        position: relative;bottom: 50px;
+        position: relative;bottom: 20px;
     }
 
     .userField {
@@ -506,20 +549,49 @@ option{
     }
 
     .textArea {
-        position: relative;bottom:38px;
-        background-color:#222430;
+        position: relative;bottom:120px;
     }
 
     textarea {
         padding: 10px;
         width:250px;
         position: relative;bottom:0px;
+        background-color: transparent;
+        color: black;
+        border: 1px solid var(--secundary-color);
     }
+
+    textarea::placeholder {
+        font-weight: 400;
+        color: var(--secundary-color);
+        font-size: 14px;
+    }
+    
 
 
     .buttonsArea {
         width: 100vw;
-        position: relative;top:20px;left:190px;
+        position: relative;left:190px;
+        padding: 10px;
+        background-color: transparent;
     }
+
+    .exitButton ion-icon {
+        font-size: 30px;
+    }
+    .editButton ion-icon {
+        font-size: 30px;
+    }
+
+    .titleUserArea {
+        font-size: 16px;
+    }
+
+    .titleUserChat {
+        font-size: 24px;
+    }
+    
+
+    
 
 }

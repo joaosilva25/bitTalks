@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" type="image.png" href="/images/bitLogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <title>Login</title>
 </head>
 <body>
@@ -15,9 +18,9 @@
             <h1>Welcome to <span class="blue_text">BitTalks ...</span></h1>
             <div class="box_login d-flex justify-content-center">
                 <form method="POST" class="d-flex flex-column" action="/login">
-                    <input type="email" placeholder="email" name="email"><br>
+                    <input type="email" placeholder="Email" name="email"><br>
                     <input type="password" placeholder="Senha" name="password"><br>
-                    <a href='/newPassword' class="FG_password">Forget your password?</a>
+                    <a href='/newPassword' class="FG_password">Esqueci minha senha ?</a>
                     <input type="submit" value="Login">
                     <p class="msg_For_User">{{msgForUser}}</p>
                     <p>Não registrado? <span class="blue_text"><a href="/register">Crie sua conta</a></span></p>

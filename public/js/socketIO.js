@@ -16,7 +16,7 @@ socket.on("join-request",titleUser);
 
 
 
-function addMessage(type,user,msg) {
+function addMessage(type,user,msg,userName) {
 
     switch(type) {
         case 'statusOn':
@@ -27,13 +27,19 @@ function addMessage(type,user,msg) {
         break;
         case 'msg':
             chatUser.innerHTML+=`<li class="msgText">
-                                    <p class="userTitle">${user}</p>
+                                    <div class="msgTextUserIdentify d-flex flex-row">                                
+                                        <div class="circlePerfilMsg" style="background-image:url('${user}')"></div>
+                                        <p class="userName2">${userName}</p>
+                                    </div>
                                     <p class="textChat">${msg}</p>
                                 </li>`
         break;
         case 'msgSended':
             chatUser.innerHTML+=`<li class="msgTextSended">
-                                    <p class="userTitle">${user}</p>
+                                    <div class="msgTextUserIdentify d-flex flex-row gap-2">                                
+                                        <div class="circlePerfilMsg" style="background-image:url('${user}')"></div>
+                                        <p class="userName1">${userName}</p>
+                                    </div>
                                     <p class="textChat">${msg}</p>
                                 </li>`
         break;
@@ -102,11 +108,11 @@ textInputArea.addEventListener("keyup",(e)=> {
 })
 
 socket.on("send-User",(data)=> {
-    addMessage('msgSended',data.user,data.message)
+    addMessage('msgSended',data.userBg,data.message,data.userName)
 })
 
 
 socket.on("send-message",(data)=> {
-    addMessage('msg',data.user,data.message)
+    addMessage('msg',data.userBg,data.message,data.userName)
 })
 

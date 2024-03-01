@@ -57,8 +57,9 @@ io.on('connection', (socket) => {
     });
     socket.on('send-message', (msg) => {
         let obj = {
-            user: socket.request.session.user.username,
-            message: msg
+            userBg: socket.request.session.user.perfil,
+            message: msg,
+            userName: socket.request.session.user.username,
         };
         socket.emit('send-User', obj);
         socket.broadcast.emit('send-message', obj);

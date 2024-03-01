@@ -42,9 +42,9 @@ const Users_1 = __importDefault(require("../models/Users"));
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         let { username, password, email } = req.body;
-        if (!username && !password && !email) {
-            let message = "Completly the inputs to continue";
-            res.render('pages/register', {
+        if (!username || !password || !email) {
+            let message = "Preencha os campos para prosseguir";
+            return res.render('pages/register', {
                 message
             });
         }
@@ -52,22 +52,22 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const token = 'null';
         let { backgroundOption } = req.body;
         let createUser = yield UserServices.createUser(username, password, email, codeAleatory, token, backgroundOption);
-        let sendEmail = yield UserServices.sendConfirmationEmail(email, codeAleatory);
-        if (createUser && sendEmail) {
+        if (createUser) {
             if (req.session) {
+                yield UserServices.sendConfirmationEmail(email, codeAleatory);
                 let sesh = req.session.usercode = createUser;
             }
-            res.redirect('/confirmation');
+            return res.redirect('/confirmation');
         }
         else {
-            let message = "User already registered";
-            res.render('pages/register', {
+            let message = "Usuário já registrado";
+            return res.render('pages/register', {
                 message
             });
         }
     }
     catch (err) {
-        res.status(400).json({ error: "Erro inesperado tente novamente mais tarde" });
+        return res.status(400).json({ error: "Erro inesperado tente novamente mais tarde" });
     }
 });
 exports.register = register;
@@ -75,32 +75,40 @@ const login = (req, res, next) => __awaiter(void 0, void 0, void 0, function* ()
     let msgForUser;
     const { email, password } = req.body;
     const user = yield UserServices.findEmail(email);
-    if (user) {
-        const comparePass = yield UserServices.findPassword(password, user.password);
-        if (comparePass) {
-            if (req.session) {
-                if (!req.session.user) {
-                    let sesh = req.session.user = user;
-                    res.redirect('/chat');
+    if (email && password) {
+        if (user) {
+            const comparePass = yield UserServices.findPassword(password, user.password);
+            if (comparePass) {
+                if (req.session) {
+                    if (!req.session.user) {
+                        let sesh = req.session.user = user;
+                        res.redirect('/chat');
+                    }
+                    else {
+                        let msgForUser = 'Você já está logado em sua conta';
+                        return res.render('pages/login', {
+                            msgForUser
+                        });
+                    }
                 }
-                else {
-                    let msgForUser = 'Você já está logado em sua conta';
-                    res.render('pages/login', {
-                        msgForUser
-                    });
-                }
+            }
+            else {
+                msgForUser = 'Senha Incorreta';
+                return res.render('pages/login', {
+                    msgForUser
+                });
             }
         }
         else {
-            msgForUser = 'Incorrect Password try again';
-            res.render('pages/login', {
+            msgForUser = 'Usuário não registrado';
+            return res.render('pages/login', {
                 msgForUser
             });
         }
     }
     else {
-        msgForUser = 'User not already Registered';
-        res.render('pages/login', {
+        msgForUser = 'Preencha os campos para prosseguir';
+        return res.render('pages/login', {
             msgForUser
         });
     }
@@ -111,7 +119,7 @@ const confirmatedUser = (req, res) => __awaiter(void 0, void 0, void 0, function
     let { codeConfirm } = req.body;
     if (!codeConfirm) {
         msgForUser = "Insira o código para prosseguir";
-        res.render('pages/userConfirm', {
+        return res.render('pages/userConfirm', {
             msgForUser
         });
     }
@@ -268,21 +276,26 @@ const createNewPass = (req, res) => __awaiter(void 0, void 0, void 0, function* 
 exports.createNewPass = createNewPass;
 const editUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let { username, backgroundOption } = req.body;
-    if (req.session && req.session.user) {
-        let userActive = req.session.user.email;
-        let user = yield UserServices.findEmail(userActive);
-        if (user) {
-            user.username = username;
-            if (!backgroundOption) {
-                user.perfil = user.perfil;
+    if (username) {
+        if (req.session && req.session.user) {
+            let userActive = req.session.user.email;
+            let user = yield UserServices.findEmail(userActive);
+            if (user) {
+                user.username = username;
+                if (!backgroundOption) {
+                    user.perfil = user.perfil;
+                }
+                else {
+                    user.perfil = backgroundOption;
+                }
+                user.save();
+                let userUpdated = req.session.user = user;
+                return res.redirect('/chat');
             }
-            else {
-                user.perfil = backgroundOption;
-            }
-            user.save();
-            let userUpdated = req.session.user = user;
-            res.redirect('/chat');
         }
+    }
+    else {
+        res.redirect('/chat');
     }
 });
 exports.editUser = editUser;

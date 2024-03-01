@@ -1,5 +1,6 @@
 
 let select=document.querySelector('.backgroundPerfil');
+let userName=document.querySelector('.userChangeName');
 
 function backgroundChoose() {
     let perfilUser = document.querySelector('.perfilUser');
@@ -13,18 +14,13 @@ function backgroundChoose() {
 select.addEventListener('change',backgroundChoose);
 
 
-function editMode() {
-    let userName=document.querySelector('.userName');
-    
+function editName() {   
 
     if(userName.readOnly==true) {
         userName.readOnly = false;
-        select.disabled=false;
     }
-    else {
-        userName.readOnly = true;
-        select.disabled=false;
-    }
-
 
 }
+
+
+userName.addEventListener('click',editName);
