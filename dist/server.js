@@ -42,6 +42,8 @@ io.on('connection', (socket) => {
             userConected.push({ user: userName, perfilUser: perfil });
         }
     }
+    socket.emit('reconnect', userConected);
+    socket.broadcast.emit('reconnect', userConected);
     socket.emit('join-user', userConected);
     socket.broadcast.emit('join-user', userConected);
     socket.emit('join-chat', userName);

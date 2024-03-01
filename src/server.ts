@@ -53,7 +53,8 @@ io.on('connection',(socket)=> {
     }
   }
 
-
+  socket.emit('reconnect',userConected)
+  socket.broadcast.emit('reconnect',userConected)
 
   socket.emit('join-user',userConected)
 

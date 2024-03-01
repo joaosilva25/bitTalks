@@ -158,6 +158,7 @@ a {
     background-size: cover;
     background-color: #282a37;
     border:1px solid  #3582c6;
+    position: relative;top:20px;
 }
 
 select {
@@ -168,7 +169,7 @@ select {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border:none;
     background-color: transparent;
-    position: relative;left:20px;top:10px;
+    position: relative;left:20px;top:20px;
     color: #7b7b7b;
     outline:none;
 }
@@ -196,6 +197,9 @@ select {
     }
 
 
+    .returnLoginTxt {
+        padding: 30px;
+    }
 
 
 }

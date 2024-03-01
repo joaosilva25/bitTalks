@@ -27,7 +27,7 @@ function addMessage(type,user,msg,userName) {
         break;
         case 'msg':
             chatUser.innerHTML+=`<li class="msgText">
-                                    <div class="msgTextUserIdentify d-flex flex-row">                                
+                                    <div class="msgTextUserIdentify d-flex flex-row gap-2">                                
                                         <div class="circlePerfilMsg" style="background-image:url('${user}')"></div>
                                         <p class="userName2">${userName}</p>
                                     </div>
@@ -71,6 +71,11 @@ socket.on("join-user",(list)=> {
     renderUserList();
 });
 
+socket.on("reconnect",(list)=> {
+    userList=list
+    
+    renderUserList()
+})
 
 function chatText(userName) {
 
@@ -115,4 +120,3 @@ socket.on("send-User",(data)=> {
 socket.on("send-message",(data)=> {
     addMessage('msg',data.userBg,data.message,data.userName)
 })
-

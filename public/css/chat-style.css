@@ -191,12 +191,12 @@
 }
 
 .msgText {
-    background-color:#226bab8a;
+    background-color:#3387d1a9;
     border-radius: 20px;
     padding:20px;
     max-width: 300px;
-    color:rgb(0, 0, 0);
-   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    color:rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     font-weight: bold;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -225,7 +225,7 @@
 }
 
 .userName2 {
-    color:var(--primary-color);
+    color:rgb(255, 255, 255);
     font-weight: 600;
 }
 
@@ -459,11 +459,12 @@ strong {
 
     .chatUsers {
         height: 180px;     
-        min-width: 450px;
+        min-width: 450px;   
+        max-width: 450px;
         order: 1;
         flex:none;
-        overflow-y: hidden;
-        overflow-x: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
         position: relative;bottom: 20px;
     }
 
@@ -523,12 +524,13 @@ strong {
     }
 
     .chatUsers {
-        min-width: 300px;
-        height: 160px; 
+        height: 180px;
+        min-width: 300px;     
+        max-width: 300px;
         order: 1;
         flex:none;
-        overflow-x:auto;
-        overflow-y: hidden;
+        overflow-y: auto;
+        overflow-x: hidden;
         position: relative;bottom: 20px;
     }
 
