@@ -6,7 +6,7 @@ https://bittalks.onrender.com
 
 
 <h1>Sobre o Projeto</h1>
-<p>BitTalks é uma plataforma de sala de bate-papo em tempo real, com registro validado por e-mail e perfis de usuários. Utiliza Socket.IO para manter o chat ativo e Mustache para o template web. Os dados dos usuários são gerenciados por uma API que permite inserção e alteração de cadastros no MongoDB.</p>
+<p>BitTalks é uma plataforma de sala de bate-papo em tempo real, com registro validado por e-mail e perfis de usuários. Utiliza Socket.IO para manter o chat ativo e Mustache para o template web. Os dados dos usuários são gerenciados por uma API que permite inserção e alteração de cadastros no MongoDB com cadastro confirmado via código no email utilizando biblioteca nodemailer.</p>
 
 <h1>Layout do Projeto</h1>
 
@@ -18,7 +18,17 @@ https://bittalks.onrender.com
 ![bittalks pic5](https://github.com/joaosilva25/bitTalks/assets/117541067/7110179d-f34d-4ccf-8ade-b3b6beaced93)
 
 
+<h1>Tecnologias Utilizadas</h1>
 
+.NODEJS
+.TYPESCRIPT
+.JAVASCRIPT
+.NODEMAILER
+.SOCKET.IO
+.EXPRESS
+.HTML/CSS
+.MUSTACHE
+.MONGODB ATLAS
 
 <h1>AUTOR</h1>
 <p>João Vitor da Silva Pinto</p>
