@@ -21,13 +21,21 @@ https://bittalks.onrender.com
 <h1>Tecnologias Utilizadas</h1>
 
 .NODEJS
+
 .TYPESCRIPT
+
 .JAVASCRIPT
+
 .NODEMAILER
+
 .SOCKET.IO
+
 .EXPRESS
+
 .HTML/CSS
+
 .MUSTACHE
+
 .MONGODB ATLAS
 
 <h1>AUTOR</h1>
