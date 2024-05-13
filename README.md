@@ -1,7 +1,8 @@
 <h1>BitTalks</h1>
-Por favor, aguarde enquanto a aplicação é inicializada. Devido ao uso da versão gratuita do Render, pode haver um tempo de espera durante o renderização. Agradecemos sua paciência enquanto a plataforma se prepara para oferecer a melhor experiência possível
+<p>Por favor, aguarde enquanto a aplicação é inicializada. Devido ao uso da versão gratuita do Render, pode haver um tempo de espera durante o renderização. Agradecemos sua paciência enquanto a plataforma se prepara para oferecer a melhor experiência possível.</p>
 
-LINK do PROJETO:
+
+
 https://bittalks.onrender.com
 
 
@@ -42,7 +43,7 @@ https://bittalks.onrender.com
 <p>João Vitor da Silva Pinto</p>
 
 <p>Linkedin:</p>
-http://www.linkedin.com/in/joaovitordasilvap/
+<p>http://www.linkedin.com/in/joaovitordasilvap/</p>
 
 
 <p>Portifolio:</p>
